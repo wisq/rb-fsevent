@@ -218,6 +218,7 @@ end
 
 desc 'replace bundled fsevent_watch binary with build/fsevent_watch'
 task :replace_exe => :build do
+  sh "mkdir -p #{File.dirname($final_exe)}"
   sh "mv #{$obj_dir.join('fsevent_watch')} #{$final_exe}"
 end
 
