@@ -41,7 +41,7 @@ class FSEvent
     # preserve correct signal handling behavior in ruby 1.8.
     while @running && IO::select([@pipe], nil, nil, nil)
       if line = @pipe.readline
-        modified_dir_paths = line.split(':').select { |dir| dir != "\n" }
+        modified_dir_paths = line.split("\0").select { |dir| dir != "\n" }
         callback.call(modified_dir_paths)
       end
     end

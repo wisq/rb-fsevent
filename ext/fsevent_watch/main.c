@@ -308,7 +308,7 @@ static void classic_output_format(size_t numEvents,
                                   char** paths)
 {
   for (size_t i = 0; i < numEvents; i++) {
-    fprintf(stdout, "%s:", paths[i]);
+    fprintf(stdout, "%s%c", paths[i], '\0');
   }
   fprintf(stdout, "\n");
 }
